@@ -6,6 +6,8 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+const blogPostRoutes = require('./routes/blogpostroutes');
+
 
 app.get("/", (req, res) => { 
     res.send("Sapta Code"); 
@@ -15,10 +17,12 @@ app.get("/", (req, res) => {
 // Landing Page API
 app.get('/api/landing-page', (req, res) => {
   const landingPageContent = {
-    title: "Welcome to My Blog",
+    title: "Welcome to Sapta Code",
     description: "This is a blog",
   };
   res.json(landingPageContent);
 });
+
+app.use('/api', blogPostRoutes);
 
 module.exports = app;
